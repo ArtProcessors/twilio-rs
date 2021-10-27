@@ -9,22 +9,18 @@ authors = ["Neil LoBracco <neil.lobracco@gmail.com>", "Lance Carlson <lancecarls
 keywords = ["twilio","rust"]
 edition = "2018"
 
-[features]
-default = ["hyper-tls"]
-rustls = ["hyper-rustls"]
-
 [dependencies]
 base64 = "0.12"
 headers = "0.3.2"
-hyper = "0.13"
-hyper-tls = { version = "0.4", optional = true }
-hyper-rustls = { version = "0.21", optional = true }
+hyper = { version = "0.14", features = ["full"]}
+hyper-rustls = { version = "0.22" }
 mime = "0.3"
 serde = { version = "1.0.10", features = ["derive"] }
 serde_json = "1.0.2"
 rust-crypto = "0.2"
 url = "2.0"
+tracing = { version = "0.1", features = ["log"] }
 
 [dev-dependencies]
 dotenv = "0.15"
-tokio = { version = "0.2", features = ["macros", "rt-core", "test-util"] }
+tokio = { version = "1.12", features = ["macros", "test-util"] }

@@ -13,10 +13,6 @@ use std::collections::BTreeMap;
 use std::error::Error;
 use std::fmt::{self, Display, Formatter};
 
-#[cfg(feature = "hyper-tls")]
-use hyper_tls::HttpsConnector;
-
-#[cfg(feature = "rustls")]
 use hyper_rustls::HttpsConnector;
 
 pub const GET: Method = Method::GET;
@@ -84,7 +80,7 @@ impl Client {
             account_id: account_id.to_string(),
             auth_token: auth_token.to_string(),
             auth_header: Authorization::basic(account_id, auth_token),
-            http_client: hyper::Client::builder().build(HttpsConnector::new()),
+            http_client: hyper::Client::builder().build(HttpsConnector::with_native_roots()),
         }
     }
 

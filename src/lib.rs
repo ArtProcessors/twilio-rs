@@ -1,5 +1,6 @@
 mod call;
 mod message;
+mod messaging_service;
 pub mod twiml;
 mod webhook;
 
@@ -9,6 +10,7 @@ use headers::{ContentType, HeaderMapExt};
 use hyper::client::connect::HttpConnector;
 use hyper::{Body, Method, StatusCode};
 pub use message::{Message, OutboundMessage};
+pub use messaging_service::{MessagingServiceMessage, OutboundMessagingServiceMessage};
 use std::collections::BTreeMap;
 use std::error::Error;
 use std::fmt::{self, Display, Formatter};
